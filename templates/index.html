@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Water Bill Tracker</h1>
+<form action="{{ url_for('add_data') }}" method="post">
+    <label for="water_bill">Water Bill:</label>
+    <input type="text" id="water_bill" name="water_bill">
+    <br>
+    <label for="water_usage">Water Usage (m3):</label>
+    <input type="text" id="water_usage" name="water_usage">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
