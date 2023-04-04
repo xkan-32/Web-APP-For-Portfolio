@@ -1,14 +1,30 @@
-{% extends "base.html" %}
+<html>
+  <head>
+    <title>Water Bill Tracker</title>
+  </head>
+  <body>
+    <h1>Water Bill Tracker</h1>
+    <form action="/add_data" method="post">
+      <p>Water Bill: <input type="text" name="water_bill"></p>
+      <p>Water Usage: <input type="text" name="water_usage"></p>
+      <input type="submit" value="Add Data">
+    </form>
+    
+    <h2>Data</h2>
+    <table>
+      <tr>
+        <th>Year-Month</th>
+        <th>Water Bill</th>
+        <th>Water Usage</th>
+      </tr>
+      {% for item in data %}
+      <tr>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
 
-{% block content %}
-<h1>Water Bill Tracker</h1>
-<form action="{{ url_for('add_data') }}" method="post">
-    <label for="water_bill">Water Bill:</label>
-    <input type="text" id="water_bill" name="water_bill">
-    <br>
-    <label for="water_usage">Water Usage (m3):</label>
-    <input type="text" id="water_usage" name="water_usage">
-    <br>
-    <input type="submit" value="Submit">
-</form>
-{% endblock %}
