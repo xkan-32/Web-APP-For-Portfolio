@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="main">
+    <h2>Data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Year-Month</th>
+          <th>Water Bill</th>
+          <th>Water Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+          <tr>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
