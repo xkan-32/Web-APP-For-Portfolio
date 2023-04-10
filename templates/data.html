@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="main">
+    <h2>Data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Year-Month</th>
+          <th>Water Bill</th>
+          <th>Water Usage</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+          <tr>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>
+              <a href="{{ url_for('delete_data', id=row[0]) }}">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Add the chart canvas -->
+    <h3>Water Data Chart</h3>
+    <canvas id="waterDataChart"></canvas>
+  </div>
+
+  <!-- Add the Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Add the chart script -->
+  <script>
+    // Parse the data from Flask
+    const rawData = {{ data|tojson|safe }};
+    const labels = rawData.map(entry => entry[1].slice(0, 7));
+    const waterBillData = rawData.map(entry => entry[2]);
+    const waterUsageData = rawData.map(entry => entry[3]);
+
+    const ctx = document.getElementById('waterDataChart').getContext('2d');
+    const waterDataChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Water Bill',
+                    data: waterBillData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    yAxisID: 'y1',
+                },
+                {
+                    label: 'Water Usage',
+                    data: waterUsageData,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    yAxisID: 'y2',
+                },
+            ],
+        },
+        options: {
+            scales: {
+                y1: {
+                    type: 'linear',
+                    position: 'left',
+                },
+                y2: {
+                    type: 'linear',
+                    position: 'right',
+                },
+            },
+        },
+    });
+  </script>
+{% endblock %}

@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Water Bill Tracker</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Water Bill Tracker</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    {% block content %}{% endblock %}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <div class="header">
+    <h1>Water Bill Tracker</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/data">Data</a></li>
+      </ul>
+    </nav>
+  </div>
+  {% block content %}
+  {% endblock %}
 </body>
 </html>
+
