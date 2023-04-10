@@ -5,13 +5,12 @@
     <h2>Add Data</h2>
     <form method="post" action="/add_data">
       <label for="year_month">Year-Month:</label>
-      <input type="text" id="year_month" name="year_month"><br><br>
+      <input type="text" id="year_month" name="year_month" pattern="\d{4}-\d{2}-\d{2}" placeholder="検針日を入力(例:2022-02-01)" required><br><br>
       <label for="water_bill">Water Bill:</label>
-      <input type="text" id="water_bill" name="water_bill"><br><br>
+      <input type="text" id="water_bill" name="water_bill" placeholder="料金を入力(円)" required><br><br>
       <label for="water_usage">Water Usage:</label>
-      <input type="text" id="water_usage" name="water_usage"><br><br>
+      <input type="text" id="water_usage" name="water_usage" placeholder="使用量を入力(m3)" required><br><br>
       <input type="submit" value="Add">
     </form>
   </div>
 {% endblock %}
-
