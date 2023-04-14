@@ -23,7 +23,7 @@ def add_data():
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="kanseiA@12345",
+        password="password",
         database="water_bill_tracker"
     )
     
@@ -40,7 +40,7 @@ def delete_data(id):
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="kanseiA@12345",
+        password="password",
         database="water_bill_tracker"
     )
     
@@ -57,7 +57,7 @@ def data():
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="kanseiA@12345",
+        password="password",
         database="water_bill_tracker"
     )
     
