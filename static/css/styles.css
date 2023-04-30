@@ -38,6 +38,10 @@
   .main {
     margin: 20px;
   }
+  .main input[type=text]{
+    box-sizing: border-box;
+    width: 250px;
+  }  
   
   table {
     border-collapse: collapse;
@@ -60,4 +64,3 @@
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
-  
